@@ -1,3 +1,5 @@
+# Задание
+
 ## Цель
 Разработать мини-приложение на CakePHP 2, которое обрабатывает и визуали-зирует UTM-данные в виде древовидной структуры.
 
@@ -39,18 +41,18 @@ MySQL 8.0.43
 Composer 2.2.0
 
 ## Консольные команды использованные для разворачивание среды
-/** Composer */
+### _Composer_
 composer update
 
-/** Создание базы utm (для production) */
+### *Создание базы utm (для production)*
 bin/create_db
 
-/** Установка пакета миграций для CakePHP */
+### *Установка пакета миграций для CakePHP*
 php composer.phar require cakephp/migrations "@stable"
 
-/** Создание миграции для создания таблицы utm_data (используется robmorgan/phinx) */
+### *Создание миграции для создания таблицы utm_data (используется robmorgan/phinx)*
 vendor/robmorgan/phinx/bin/phinx create CreateUtmData
 
-/** Проведение миграции (для production) */
+### *Проведение миграции (для production)*
 vendor/robmorgan/phinx/bin/phinx migrate -e production
 
