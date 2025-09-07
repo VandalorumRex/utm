@@ -1,0 +1,5 @@
+mysql -u root -p -e "
+    CREATE DATABASE IF NOT EXISTS utm_dev; 
+    GRANT ALL PRIVILEGES ON utm_dev.* TO 'utm'@'localhost';
+    FLUSH PRIVILEGES;
+    select host,db,user from mysql.db where user='utm';"
