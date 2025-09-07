@@ -24,11 +24,10 @@ e.	Для каждого content — список term
 2.	Реализовать пагинацию - на одной странице должно отображаться не более 20 source
 
 ## Пример данных
->source	medium	campaign	content	term
->
->google	cpc	summer	banner	video
->
->google	cpc	winter	delta	NULL
+|source|medium|campaign|content|term|
+|------|------|--------|-------|----|
+|google|cpc|summer|banner|video|
+|google|cpc|winter|delta|NULL|
 
 ## Ожидаемый вывод на странице
 >google
