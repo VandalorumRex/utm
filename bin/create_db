@@ -1,0 +1,9 @@
+if [ "$1" = "" ];
+then
+    echo 'Повторите комманду и введите пароль как аргумент не меньше 8 символов'
+else
+mysql -u root -p -e "
+    CREATE USER 'utm'@'localhost' IDENTIFIED BY '$1'; use mysql; select user,host from user where user='utm'; 
+    create database utm; GRANT ALL PRIVILEGES ON utm.* TO 'utm'@'localhost'; 
+    FLUSH PRIVILEGES;select host,db,user from db where user='utm';"
+fi;
