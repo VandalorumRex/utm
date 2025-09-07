@@ -1,9 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 use Phinx\Migration\AbstractMigration;
 
 class CreateUtmData extends AbstractMigration
 {
+    public static $sources = ['bing', 'ecosia', 'google', 'quant', 'yandex'];
+    public static $medims = ['cpc'];
+    public static $campaigns = ['spring', 'summer', 'autumn', 'winter'];
+    public static $contents = ['banner', 'delta'];
+    public static $terms = ['audio', 'document', 'image', 'video', null];
     /**
      * Change Method.
      *
@@ -29,14 +36,46 @@ class CreateUtmData extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function change()
+    public function up()
     {
-        $this->table('utm_data')
+        $table = $this->table('utm_data');
+        $table
             ->addColumn('source', 'string', ['null' => false])
             ->addColumn('medium', 'string', ['null' => false])
             ->addColumn('campaign', 'string', ['null' => false])
             ->addColumn('content', 'string', ['null' => true])
             ->addColumn('term', 'string', ['null' => true])
             ->create();
+        /** @var array<array<string, string>> $data */
+        $data = [];
+        if ($this->isMigratingUp()) {
+            /** @var array<string, string> $item */
+            $item = [];
+            foreach (self::$sources as $source) {
+                $item['source'] = $source;
+                foreach (self::$medims as $medium) {
+                    $item['medium'] = $medium;
+                    foreach (self::$campaigns as $campaign) {
+                        $item['campaign'] = $campaign;
+                        foreach (self::$contents as $content) {
+                            $item['content'] = $content;
+                            foreach (self::$terms as $term) {
+                                $item['term'] = $term;
+                                array_push($data, $item);
+                            }
+                        }
+                    }
+                }
+            }
+            foreach ($data as $item) {
+                $table->insert($item)->saveData();
+            }
+        }
+    }
+
+    public function down()
+    {
+        $this->table('utm_data')
+            ->drop()->update();
     }
 }
