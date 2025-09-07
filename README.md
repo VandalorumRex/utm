@@ -24,26 +24,38 @@ e.	Для каждого content — список term
 2.	Реализовать пагинацию - на одной странице должно отображаться не более 20 source
 
 ## Пример данных
-source	medium	campaign	content	term
-google	cpc	summer	banner	video
-google	cpc	winter	delta	NULL
+>source	medium	campaign	content	term
+>
+>google	cpc	summer	banner	video
+>
+>google	cpc	winter	delta	NULL
 
 ## Ожидаемый вывод на странице
-google
-....cpc
-........summer
-............banner
-................video
-........winter		
-............delta	
-................NULL
+>google
+>
+>....cpc
+>
+>........summer
+>
+>............banner
+>
+>................video
+>
+>........winter	
+>
+>............delta
+>
+>................NULL
 
 # <u>Выполнение задания</u>
 ## Системное окружение
-Apache 2.4.62
-PHP 5.6.40
-MySQL 8.0.43
-Composer 2.2.0
+>Apache 2.4.62
+>
+>PHP 5.6.40
+>
+>MySQL 8.0.43
+>
+>Composer 2.2.0
 
 ## Консольные команды использованные для разворачивание среды
 ### _Composer_
