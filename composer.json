@@ -27,5 +27,10 @@
 	},
 	"bin": [
 		"lib/Cake/Console/cake"
-	]
+	],
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	}
 }
