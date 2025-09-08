@@ -72,3 +72,5 @@ Vendor/bin/phinx create CreateUtmData
 ### *Проведение миграции (для production)*
 Vendor/bin/phinx migrate -e production
 
+## Результат
+![Скрин экрана](https://github.com/VandalorumRex/utm/blob/master/app/webroot/img/resultat.png)
