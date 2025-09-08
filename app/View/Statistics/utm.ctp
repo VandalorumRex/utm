@@ -5,12 +5,10 @@
  *
  * @author Mansur
  */
-/* $source = '';
-  $medium = '';
-  $campaign = '';
-  $content = '';
-  $term = ''; */
-echo '<pre>';
+?>
+<h4>Utm Data</h4>
+<pre style="margin-left:50px; font-size:10px;">
+<?php
 foreach ($data as $source => $data2) {
     echo $source . PHP_EOL;
     foreach ($data2 as $medium => $data3) {
@@ -25,9 +23,8 @@ foreach ($data as $source => $data2) {
             }
         }
     }
-}
-echo '</pre>';
-?>
+}?>
+</pre>
 <nav aria-label="Pagination">
   <ul class="pagination text-center">
     <?php $pagePrevious = $page - 1?>
