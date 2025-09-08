@@ -1,16 +1,19 @@
 <?php
 
-declare(strict_types=1);
-
 use Phinx\Migration\AbstractMigration;
 
 class CreateUtmData extends AbstractMigration
 {
-    public static $sources = ['bing', 'ecosia', 'google', 'quant', 'yandex'];
+    public static $sources = [
+        'baidu', 'bing', 'duckduckgo', 'dzen', 'ecosia',
+        'google', 'habr', 'hh', 'mail.ru', 'max',
+        'perplexity', 'qwant', 'rambler', 'rutube','tg',
+        'vk', 'whatsapp', 'wolframalpha',
+        'wikipedia', 'yahoo', 'yandex', 'youtube'];
     public static $medims = ['cpc'];
-    public static $campaigns = ['spring', 'summer', 'autumn', 'winter'];
+    public static $campaigns = ['summer', 'winter'];
     public static $contents = ['banner', 'delta'];
-    public static $terms = ['audio', 'document', 'image', 'video', null];
+    public static $terms = ['video', null];
     /**
      * Change Method.
      *
