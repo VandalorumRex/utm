@@ -27,3 +27,27 @@ foreach ($data as $source => $data2) {
     }
 }
 echo '</pre>';
+?>
+<nav aria-label="Pagination">
+  <ul class="pagination text-center">
+    <?php $pagePrevious = $page - 1?>
+    <?php if ($pagePrevious < 1) : ?>
+    <li class="pagination-previous disabled">Previous</li>
+    <?php else : ?>
+    <li class="pagination-previous"><a href="/statistics/utm/list?page=<?= $pagePrevious?>" aria-label="Previous page">Previous</a></li>
+    <?php endif ?>
+    <?php for ($i=1; $i<=$pagesCount; $i++) : ?>
+    <?php if ($i === $page) : ?>
+    <li class="current"><span class="show-for-sr">You're on page</span> <?= $i?></li>
+    <?php else : ?>
+    <li><a href="/statistics/utm/list?page=<?= $i?>" aria-label="Page <?= $i?>"><?= $i?></a></li>
+    <?php endif ?>
+    <?php endfor ?>
+    <?php $pageNext = $page + 1?>
+    <?php if ($pageNext <= $pagesCount) : ?>
+    <li class="pagination-next"><a href="/statistics/utm/list?page=<?= $pageNext?>" aria-label="Next page">Next</a></li>
+    <?php else : ?>
+    <li class="pagination-next disabled">Next</li>
+    <?php endif ?>
+  </ul>
+</nav>

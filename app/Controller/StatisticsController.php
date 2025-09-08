@@ -14,8 +14,7 @@ App::uses('AppController', 'Controller');
  */
 class StatisticsController extends AppController
 {
-    //var $name="NoModels";
-    //public $uses = null;
+    public $components = ['Paginator'];
 
     public function utm($list)
     {
@@ -43,7 +42,10 @@ class StatisticsController extends AppController
             FROM utm_data
             ORDER BY source, medium, campaign, content, term')
             ->fetch_all(MYSQLI_ASSOC);
-
+        /** @var int[] $pagesCount */
+        $sourceCount = $dbc->query('SELECT COUNT(DISTINCT source) as count FROM utm_data')->fetch_row();
+        $pagesCount = ceil($sourceCount[0] / LIMIT);
+        //echo $pagesCount;
         // Close the database connection
         $dbc->close();
         /** @var array<string, array<string, <array<string, array<string, array<string, string|null>>>>> $data */
@@ -71,6 +73,7 @@ class StatisticsController extends AppController
         if ($offset > 0) {
             $data = array_slice($data, $offset, LIMIT, true);
         }
-        $this->set(['data' => $data]);
+        $this->layout = 'empty';
+        $this->set(['data' => $data, 'page' => $page, 'pagesCount' => $pagesCount]);
     }
 }
