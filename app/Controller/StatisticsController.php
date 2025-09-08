@@ -4,7 +4,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/CakePHP3 Framework/Controller.php to edit this template
  */
-App::uses('AppController' , 'Controller');
+App::uses('AppController', 'Controller');
 
 /**
  * CakePHP StatisticsController
@@ -24,7 +24,7 @@ class StatisticsController extends AppController
         require_once(ROOT . '/app/Config/database.php');
         $DB = new DATABASE_CONFIG();
 
-        $dbc = new mysqli($DB->default['host'] , $DB->default['login'] , $DB->default['password'] , $DB->default['database']);
+        $dbc = new mysqli($DB->default['host'], $DB->default['login'], $DB->default['password'], $DB->default['database']);
 
         // Make sure we use UTF8 encoding
         if ($DB->default['encoding'] == 'utf8') {
@@ -54,6 +54,7 @@ class StatisticsController extends AppController
             if (!isset($data[$item['source']][$item['medium']][$item['campaign']][$item['content']])) {
                 $data[$item['source']][$item['medium']][$item['campaign']][$item['content']] = [];
             }
+            array_push($data[$item['source']][$item['medium']][$item['campaign']][$item['content']], $item['term']);
         }
         $this->set(['data' => $data]);
     }

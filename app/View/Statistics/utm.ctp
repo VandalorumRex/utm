@@ -19,6 +19,9 @@ foreach ($data as $source => $data2) {
             echo '....' . '....' . $campaign . PHP_EOL;
             foreach ($data4 as $content => $data5) {
                 echo '....' . '....' . '....' . $content . PHP_EOL;
+                foreach ($data5 as $term) {
+                    echo '....' . '....' . '....' . '....' . (is_null($term) ? 'NULL' : $term) . PHP_EOL;
+                }
             }
         }
     }
